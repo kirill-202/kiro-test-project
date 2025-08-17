@@ -8,29 +8,38 @@ import (
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 	
-	colors := []string{
-		"#FF6B6B", "#4ECDC4", "#45B7D1", "#96CEB4", "#FFEAA7",
-		"#DDA0DD", "#98D8C8", "#F7DC6F", "#BB8FCE", "#85C1E9",
-		"#F8C471", "#82E0AA", "#F1948A", "#85C1E9", "#D7BDE2",
-		"#A3E4D7", "#F9E79F", "#D5A6BD", "#AED6F1", "#A9DFBF",
-		"#F5B7B1", "#D2B4DE", "#AED6F1", "#A9CCE3", "#FADBD8",
-	}
-	
 	fmt.Fprintf(w, `<html>
 <head>
 	<style>
-		body { font-family: 'Courier New', monospace; background: #1a1a1a; padding: 20px; }
-		h1 { color: #00ff00; text-align: center; }
-		.hello-line { font-size: 18px; margin: 5px 0; font-weight: bold; }
+		body { 
+			font-family: Arial, sans-serif; 
+			background: linear-gradient(135deg, #667eea 0%%, #764ba2 100%%);
+			margin: 0;
+			padding: 20px;
+			min-height: 100vh;
+		}
+		h1 { 
+			color: white; 
+			text-align: center; 
+			text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+			margin-bottom: 30px;
+		}
+		.hello-text {
+			color: white;
+			font-size: 18px;
+			font-weight: bold;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+			line-height: 1.8;
+			text-align: center;
+		}
 	</style>
 </head>
 <body>
-	<h1>🌈 Colorful Hello World App 🌈</h1>
-	<div>`)
+	<h1>Hello World App</h1>
+	<div class="hello-text">`)
 	
 	for i := 1; i <= 25; i++ {
-		color := colors[i-1]
-		fmt.Fprintf(w, `<div class="hello-line" style="color: %s;">Hello World #%d</div>`, color, i)
+		fmt.Fprintf(w, "Hello World<br>")
 	}
 	
 	fmt.Fprintf(w, `	</div>
